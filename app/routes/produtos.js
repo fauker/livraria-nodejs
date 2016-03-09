@@ -9,7 +9,7 @@ module.exports = function(app) {
 					res.render('produtos/lista', {lista: results});
 				},
 				json: function() {
-					rest.json(results);
+					res.json(results);
 				}
 			});
 		});
