@@ -8,4 +8,18 @@ describe('#LivrosController', function() {
 		.expect('Content-Type', /json/)
 		.expect(200, done);
 	});
+
+	it('#cadastro de novo livro com dados invalidos', function(done) {
+		request.post('/produtos')
+		.type('form')
+		.send({titulo: '', descricao: 'novo livro'})
+		.expect(400, done);
+	});
+
+	it('#cadastro de novo livro com dados validos', function(done) {
+		request.post('/produtos')
+		.type('form')
+		.send({titulo: 'Titulo de um novo livro', descricao: 'novo livro', preco: 50.0})
+		.expect(302, done);
+	});
 });

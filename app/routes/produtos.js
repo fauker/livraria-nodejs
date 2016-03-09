@@ -25,10 +25,17 @@ module.exports = function(app) {
 		req.assert('titulo', 'O título é obrigatório').notEmpty();
 
 		var livro = req.body;
-
+		console.log(livro);
 		var erros = req.validationErrors();
 		if (erros) {
-			res.render('produtos/form', {errosValidacao: erros, livro:livro});	
+			res.format({
+				html: function() {
+					res.status(400).render('produtos/form', {errosValidacao: erros, livro: {}});
+				},
+				json: function() {
+					res.status(400).json(erros);
+				}
+			});			
 			return;
 		}
 
