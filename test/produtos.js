@@ -2,6 +2,17 @@ var express = require('../config/express')();
 var request = require('supertest')(express);
 
 describe('#LivrosController', function() {
+
+	beforeEach(function(done) {
+		var conn = express.infra.connectionFactory();
+		//node-database-cleaner limpa todas as tabelas
+		conn.query("delete from livros", function(ex, result) {
+			if(!ex) {
+				done();
+			}
+		});
+	});
+
 	it('#listagem json', function(done) {
 		request.get('/produtos')
 		.set('Accept', 'application/json')
