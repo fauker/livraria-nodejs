@@ -1,4 +1,5 @@
 var http = require('http');
+var assert = require('assert');
 
 describe('#LivrosController', function() {
 	it('#listagem json', function(done) {
@@ -11,6 +12,7 @@ describe('#LivrosController', function() {
 			}
 		};
 		http.get(configuracoes, function(res) {
+			assert.equal(res.statusCode, 200);
 			done();
 		});
 	});
