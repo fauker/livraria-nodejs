@@ -22,6 +22,14 @@ module.exports = function(app) {
 	});
 
 	app.post('/produtos', function(req, res) {
+		req.assert('titulo', 'O título é obrigatório').notEmpty();
+
+		var erros = req.validationErrors();
+		if (erros) {
+			res.render('produtos/form', {errosValidacao: erros});	
+			return;
+		}
+
 		var connection = app.infra.connectionFactory();
 		var produtosDAO = new app.infra.ProdutosDAO(connection);
 		var livro = req.body;
