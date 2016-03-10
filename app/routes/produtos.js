@@ -28,7 +28,6 @@ module.exports = function(app) {
 		req.assert('titulo', 'O título é obrigatório').notEmpty();
 
 		var livro = req.body;
-		console.log(livro);
 		var erros = req.validationErrors();
 		if (erros) {
 			res.format({
