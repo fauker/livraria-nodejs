@@ -1,29 +1,46 @@
 <html>
-	<body>
-		<div class="erros">
-			<%if (errosValidacao) {%>
-				<ul>
-					<%for(var i = 0; i < errosValidacao.length; i++) {%>
-						<li><%=errosValidacao[i].param%> - <%=errosValidacao[i].msg%></li>
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">		
+</head>
+<body>
+	<div class="content">
+		<div class="col-md-12">
+			<div class="jumbotron"><h2><center>Cadastro de Livros</center></h2></div>
+
+			<div class="col-md-offset-3 col-md-6">
+			<a href="/produtos" class="btn btn-xs btn-primary">Listagem de Livros</a>
+				<div class="bg-danger">
+					<%if (errosValidacao) {%>
+						<ul>
+							<%for(var i = 0; i < errosValidacao.length; i++) {%>
+								<li><%=errosValidacao[i].param%> - <%=errosValidacao[i].msg%></li>
+							<%}%>
+						</ul>
 					<%}%>
-				</ul>
-			<%}%>
-		</div>
-		<form action="/produtos" method="POST">
-			<div> 
-				<label for="titulo">Título</label>
-				<input type="text" id="titulo" name="titulo" value="<%=livro.titulo%>" placeholder="Digite o titulo do livro">
-			</div>
-			<div>
-				<label for="preco">Preço</label>
-				<input type="text" id="preco" name="preco" placeholder="150.00" value="<%=livro.preco%>">
-			</div>
-			<div>
-				<label for="descricao">Descrição</label>
-				<textarea rows="10" cols="50" id="descricao" name="descricao" placeholder="Digite a descricao do livro"
-				><%=livro.decricao%></textarea>
+				</div>
+				<form action="/produtos" method="POST">
+					<div class="form-group"> 
+						<label for="titulo">Título</label>
+						<input type="text" class="form-control" id="titulo" name="titulo" value="<%=livro.titulo%>" placeholder="Digite o titulo do livro">
+					</div>
+					<div class="form-group">
+						<label for="preco">Preço</label>
+						<input type="text" id="preco" class="form-control" name="preco" placeholder="150.00" value="<%=livro.preco%>">
+					</div>
+					<div class="form-group">
+						<label for="descricao">Descrição</label>
+						<textarea rows="10" cols="50" id="descricao" class="form-control" name="descricao" placeholder="Digite a descricao do livro"
+						><%=livro.decricao%></textarea>
+					</div>			
+					<div class="form-group">
+						<label for="capa">Link da Capa do Livro</label>
+						<input type="text" id="capa" class="form-control" name="capa" placeholder="Insira aqui o link da imagem da capa do livro. Exemplo: http://www.site.com/imagem"></input>
+					</div>			
+					<button class="btn btn-success btn-block" type="submit">Salvar</button>
+				</form>						
 			</div>						
-			<button type="submit">Salvar</button>
-		</form>
-	</body>
+		</div>
+	</div>
+</body>
 </html>

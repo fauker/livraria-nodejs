@@ -2,24 +2,37 @@
 <html>
 <head>
     <title></title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">            
 </head>
 <body>
-    <ul >
-        <%for(i=0; i<livros.length; i++) {%>
-            <li>
-                <a>
-                    <h2><%=livros[i].titulo%></h2>
-                    <img width="143"
-                         height="202"
-                         src="https://pbs.twimg.com/profile_images/1870017268/homer.jpg"
-                         alt="<%=livros[i].titulo%>"
-                         title="<%=livros[i].titulo%>"/>
-                    <br/>
-                    <small class="buy-button">Compre</small>
-                </a>
-            </li>
-        <%}%>
-    </ul>
+    <div class="container">
+        <div class="row">
+           <div class="col-md-12">
+            <div class="jumbotron"><h2><center>Livros</center></h2></div>
+                <div class="col-md-offset-1">
+                   <ul>
+                        <%for(i=0; i<livros.length; i++) {%>
+                            <div class="col-md-4">
+                                <li>
+                                    <h2><%=livros[i].titulo%></h2>
+                                    <img width="143"
+                                         class="img-rounded"
+                                         height="202"
+                                         src="http://wbruno.com.br/wp-content/uploads/2015/09/capa-livro-node-js-714x1024.png"
+                                         alt="<%=livros[i].titulo%>"
+                                         title="<%=livros[i].titulo%>"/>
+                                    <br/>
+                                    <p><%=livros[i].descricao%></p>
+                                    <a href=""><small class="buy-button">Compre</small></a>
+                                </li>                                
+                            </div>
+                        <%}%>
+                    </ul>                
+                </div>
+            </div>            
+        </div>
+    </div>
 </body>
 <script src="/socket.io/socket.io.js"></script>
 <script>

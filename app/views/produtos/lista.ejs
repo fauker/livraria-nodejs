@@ -1,20 +1,42 @@
 <html>
-	<body>
-		<table >
-			<tr>
-				<td>id</td>
-				<td>titulo</td>
-				<td>descricao</td>
-				<td>preco</td>
-			</tr>
-			<%for(var i = 0; i < lista.length; i++) {%>
-				<tr>
-					<td><%=lista[i].id%></td>
-					<td><%=lista[i].titulo%></td>
-					<td><%=lista[i].descricao%></td>
-					<td><%=lista[i].descricao%></td>
-				</tr>
-			<%}%>
-		</table>
-	</body>
+<head>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">		
+</head>
+<body>
+	<div class="content">
+		<div class="col-md-12">
+			<div class="jumbotron"><h2><center>Painel Administrativo</center></h2></div>
+			<div class="row">
+				<div class="col-md-offset-3 col-md-6">
+					<a href="/produtos/form" class="btn btn-xs btn-primary">Cadastrar Novo Livro</a>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Título</th>
+								<th>Descrição</th>
+								<th>Preço</th>
+								<th></th>
+								<th></th>
+							</tr>							
+						</thead>
+						<tbody>
+							<%for(var i = 0; i < lista.length; i++) {%>
+								<tr>
+									<td><%=lista[i].id%></td>
+									<td><%=lista[i].titulo%></td>
+									<td><%=lista[i].descricao%></td>
+									<td><%=lista[i].preco%></td>
+									<td><a>Editar</a></td>
+									<td><a href="">Excluir</a></td>
+								</tr>
+							<%}%>							
+						</tbody>
+					</table>			
+				</div>				
+			</div>
+		</div>
+	</div>
+</body>
 </html>
